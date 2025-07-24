@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Terms & Conditions - GreenGrocer Grocery Store{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img src="/static/IMAGES/logo.png" alt="logo" id="logoh">GreenGrocer
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('products') }}">
+                            <i class="fas fa-box me-1"></i>Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">
+                            <i class="fas fa-envelope me-1"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('faq') }}">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    {% if current_user_id %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('cart') }}">
+                                <i class="fas fa-shopping-cart me-1"></i>Cart
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('order_history') }}">
+                                <i class="fas fa-history me-1"></i>Orders
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user me-1"></i>{{ current_username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('logout') }}">
+                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                </a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}">
+                                <i class="fas fa-user-plus me-1"></i>Register
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-5">
+                <h2><i class="fas fa-file-contract me-2"></i>Terms & Conditions</h2>
+                <p class="lead">Please read these terms and conditions carefully before using our service.</p>
+                <small class="text-muted">Last updated: {{ last_updated }}</small>
+
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <section class="mb-4">
+                        <h4>1. Agreement to Terms</h4>
+                        <p>By accessing and using FreshMart grocery delivery service, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>2. Use License</h4>
+                        <p>Permission is granted to temporarily download one copy of FreshMart's materials for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                        <ul>
+                            <li>modify or copy the materials</li>
+                            <li>use the materials for any commercial purpose or for any public display</li>
+                            <li>attempt to reverse engineer any software contained on the website</li>
+                            <li>remove any copyright or other proprietary notations from the materials</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>3. Account Registration</h4>
+                        <p>To place orders, you must create an account with accurate and complete information. You are responsible for:</p>
+                        <ul>
+                            <li>Maintaining the confidentiality of your account credentials</li>
+                            <li>All activities that occur under your account</li>
+                            <li>Notifying us immediately of any unauthorized use of your account</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>4. Orders and Payment</h4>
+                        <p>All orders are subject to acceptance and availability. We reserve the right to refuse or cancel orders at our discretion. Payment terms include:</p>
+                        <ul>
+                            <li>Cash on Delivery (COD) - Payment due upon delivery</li>
+                            <li>Online Payment - Processed securely through our payment partners</li>
+                            <li>All prices are subject to change without notice</li>
+                            <li>Delivery charges apply as specified at checkout</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>5. Delivery Policy</h4>
+                        <p>Our delivery service operates under the following conditions:</p>
+                        <ul>
+                            <li>Delivery times are estimates and may vary due to weather or traffic conditions</li>
+                            <li>You must be available at the delivery address during the scheduled time</li>
+                            <li>We are not responsible for products left unattended at your request</li>
+                            <li>Special delivery instructions should be provided during checkout</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>6. Product Quality and Returns</h4>
+                        <p>We are committed to providing fresh, quality products:</p>
+                        <ul>
+                            <li>Products are checked for quality before delivery</li>
+                            <li>Damaged or expired products can be returned for full refund</li>
+                            <li>Returns must be reported within 24 hours of delivery</li>
+                            <li>Perishable items cannot be returned after consumption</li>
+                        </ul>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>7. Privacy Policy</h4>
+                        <p>Your privacy is important to us. We collect and use personal information to:</p>
+                        <ul>
+                            <li>Process and fulfill your orders</li>
+                            <li>Communicate with you about your orders</li>
+                            <li>Improve our services</li>
+                            <li>Send promotional offers (with your consent)</li>
+                        </ul>
+                        <p>We do not share your personal information with third parties except as necessary to fulfill orders.</p>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>8. Limitation of Liability</h4>
+                        <p>FreshMart shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the service.</p>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>9. Governing Law</h4>
+                        <p>These terms and conditions are governed by and construed in accordance with the laws of the jurisdiction in which FreshMart operates, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>10. Changes to Terms</h4>
+                        <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on our website. Your continued use of the service after changes are posted constitutes acceptance of the modified terms.</p>
+                    </section>
+                    
+                    <section class="mb-4">
+                        <h4>11. Contact Information</h4>
+                        <p>If you have any questions about these Terms & Conditions, please contact us:</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-envelope me-2"></i>Email: greengrocer@gmail.com</li>
+                            <li><i class="fas fa-phone me-2"></i>Phone: +91 9943998374</li>
+                            <li><i class="fas fa-map-marker-alt me-2"></i>Address: 123, GG Complex, NGO Colony, Tirunelveli</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="{{ url_for('index') }}" class="btn btn-success">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    </main>
+<!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><img src="/static/IMAGES/logo.png" alt="logo" id="logoh">GreenGrocer</h5>
+                    <p>Your trusted grocery store for fresh and quality products.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('products') }}" class="text-decoration-none">Products</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="text-decoration-none">Contact Us</a></li>
+                        <li><a href="{{ url_for('faq') }}" class="text-decoration-none">FAQ</a></li>
+                        <li><a href="{{ url_for('terms') }}" class="text-decoration-none">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone me-2"></i>+91 9943998374</p>
+                    <p><i class="fas fa-envelope me-2"></i>greengrocer@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>123, GG Complex, NGO Colony, Tirunelveli</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 GreenGrocer Grocery Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+/* Custom styles for FreshMart Grocery Store */
+
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+/* Navbar Logo */
+#logoh{
+    width: 80px;
+    height: auto;
+    border-radius: 60px;
+    margin-right: 5px;
+}
+/* Navigation enhancements */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Product cards */
+.product-card .card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/*product images*/
+.card img{
+    border-radius: 40px;
+}
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(135deg, var(--bs-success) 0%, #218838 100%);
+}
+
+/* Category icons */
+.category-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Price styling */
+.price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--bs-success);
+}
+
+/* Button enhancements */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Quantity input styling */
+.quantity-input {
+    max-width: 80px;
+}
+
+/* Order status badges */
+.status-badge {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* Loading animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .display-1 {
+        font-size: 4rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Cart page styling */
+.cart-item-image {
+    max-width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Checkout page */
+.checkout-summary {
+    position: sticky;
+    top: 2rem;
+}
+
+/* Order history timeline */
+.order-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.order-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--bs-success);
+}
+
+.order-timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.order-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bs-success);
+}
+
+/* Success messages */
+.alert-success {
+    border-left: 4px solid var(--bs-success);
+}
+
+/* Error messages */
+.alert-danger {
+    border-left: 4px solid var(--bs-danger);
+}
+
+/* Category sidebar */
+.category-sidebar {
+    position: sticky;
+    top: 2rem;
+}
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-success);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:   #1ccf3d;
+}
+
+/* Payment options styling */
+.payment-app-btn {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.payment-app-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-app-btn.active {
+    border-color: var(--bs-success);
+    background-color: var(--bs-success);
+    color: white;
+}
+
+.payment-app-btn.active:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+#onlinePaymentOptions {
+    border-left: 4px solid var(--bs-info);
+    padding-left: 1rem;
+    margin-left: 1rem;
+}
+
+#paymentPasswordSection {
+    background-color: var(--bs-light);
+    padding: 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--bs-border-color);
+}
+
+/* Rupee symbol styling */
+.price-rupee {
+    font-weight: bold;
+    color: var(--bs-success);
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .btn,
+    footer {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+.accordion-body a:hover{
+    color: #1ccf3d;
+}
+
+.nav-link:hover{
+    color: #fff;
+}
