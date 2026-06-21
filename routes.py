@@ -35,6 +35,12 @@ def forgot_password():
         new_password = request.form['new_password']
         
         user = User.query.filter_by(username=username, email=email).first()
+        if not user:
+            flash('Invalid username or email.', 'danger')
+            return render_template('forgot_password.html')
+        if not validate_password(new_password):
+            flash('Password must be at least 4 characters with exactly 2 numbers and no special characters.', 'danger')
+            return render_template('forgot_password.html')
         
         if user:
             user.password_hash = generate_password_hash(new_password)
