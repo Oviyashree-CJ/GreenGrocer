@@ -358,7 +358,7 @@ def contact():
         username = session.get('username', 'Guest')
         if not username:
             flash('Login to contact the service.', 'warning')
-            return redirect(url_for('contact'))
+            return render_template('login.html')
         user_phone = request.form.get('phone')
         user_message = request.form.get('message')
 
