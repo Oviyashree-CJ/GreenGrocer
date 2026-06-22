@@ -353,7 +353,7 @@ def order_history():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        username = session['username'] 
+        username = session.get('username', 'Guest')
         user_phone = request.form.get('phone')
         user_message = request.form.get('message')
 
