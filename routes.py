@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash, session, jsonify
 from twilio.rest import Client
 from werkzeug.security import generate_password_hash
+from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 from app import app, db
 from models import User, Product, CartItem, Order, OrderItem, Benefit
@@ -144,12 +145,7 @@ def products(category=None):
     if category:
         from urllib.parse import unquote
         print("Decoded category:", repr(unquote(category)))
-        all_products = Product.query.all()
-
-        print("Requested category:", repr(category))
-
-        for p in all_products:
-            print("DB category:", repr(p.category))
+        products = Product.query.options(joinedload(Product.benefits)).filter(func.trim(func.lower(Product.category))== category.strip().lower()).all()
         print("Products found:", len(products))
     else:
         products = Product.query.options(joinedload(Product.benefits)).all()
