@@ -355,7 +355,7 @@ def order_history():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        username = session.get('username', 'Guest')
+        username = session.get('username')
         if not username:
             flash('Login to contact the service.', 'warning')
             return render_template('login.html')
