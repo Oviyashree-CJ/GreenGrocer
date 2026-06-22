@@ -356,6 +356,9 @@ def order_history():
 def contact():
     if request.method == 'POST':
         username = session.get('username', 'Guest')
+        if not username:
+            flash('Login to contact the service.', 'warning')
+            return redirect(url_for('contact'))
         user_phone = request.form.get('phone')
         user_message = request.form.get('message')
 
