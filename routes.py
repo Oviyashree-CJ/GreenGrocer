@@ -24,7 +24,7 @@ client = Client(account_sid, auth_token)
 @app.route('/')
 def index():
     """Homepage with featured products and categories"""
-    categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal Care']
+    categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal-Care']
     featured_products = Product.query.limit(8).all()
     return render_template('index.html', categories=categories, featured_products=featured_products)
 
@@ -140,10 +140,10 @@ def logout():
 @app.route('/products/<category>')
 def products(category=None):
     """Products page with category filtering"""
-    categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal Care']
+    categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal-Care']
     
     if category:
-        products = Product.query.filter(func.trim(Product.category) == category.strip()).all()
+        products = Product.query.options(joinedload(Product.benefits)).filter(func.trim(func.lower(Product.category))== category.strip().lower()).all()
         print("Products found:", len(products))
     else:
         products = Product.query.options(joinedload(Product.benefits)).all()

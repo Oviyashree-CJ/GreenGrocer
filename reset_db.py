@@ -84,15 +84,15 @@ with app.app_context():
             Product(name="Chicken masala", category="Spices", price=30, description="AACHI Chicken masala - 50g pack", image_url="chicken_masala.jpeg"),
             Product(name="Ceylon Cinnamon", category="Spices", price=150, description="Ceylon Cinnamon with rich flavour ", image_url="cinna.jpeg"),
             Product(name="Aachi combo offer powder", category="Spices", price=100, description="3 packs of aachi different flavoured powder - 100g pack", image_url="combopowder.jpeg"),
-            Product(name="Hand Soap", category="Personal Care", price=80, description="Antibacterial hand soap - 350ml pump", image_url="hand_soap.jpeg"),
-            Product(name="Shampoo", category="Personal Care", price=140, description="Daily shampoo - 500ml bottle", image_url="clinic.jpeg"),
-            Product(name="Toothpaste", category="Personal Care", price=90, description="Fluoride toothpaste - 150g tube", image_url="col.png"),
-            Product(name="Toothbrush", category="Personal Care", price=20, description=" Toothbrush with soft technology - 1 tooth brush", image_url="toothbrush.jpeg"),
-            Product(name="Dish washer", category="Personal Care", price=90, description="Dish washer with combo offer of 4 different smell", image_url="dish_washer.jpeg"),
-            Product(name="Detergent", category="Personal Care", price=100, description="Ariel Detergent  ", image_url="detergent.jpeg"),
-            Product(name="Wipes", category="Personal Care", price=20, description="Soft and Moisture Wipes ", image_url="wipes.jpeg"),
-            Product(name="Body Lotion", category="Personal Care", price=300, description="Moisturizing body lotion - 350ml bottle", image_url="body_lotion.jpeg"),
-            Product(name="Broom Stick", category="Personal Care", price=150, description="Easy to handle and cleaning is extraordinary with comfort", image_url="broom.jpeg")
+            Product(name="Hand Soap", category="Personal-Care", price=80, description="Antibacterial hand soap - 350ml pump", image_url="hand_soap.jpeg"),
+            Product(name="Shampoo", category="Personal-Care", price=140, description="Daily shampoo - 500ml bottle", image_url="clinic.jpeg"),
+            Product(name="Toothpaste", category="Personal-Care", price=90, description="Fluoride toothpaste - 150g tube", image_url="col.png"),
+            Product(name="Toothbrush", category="Personal-Care", price=20, description=" Toothbrush with soft technology - 1 tooth brush", image_url="toothbrush.jpeg"),
+            Product(name="Dish washer", category="Personal-Care", price=90, description="Dish washer with combo offer of 4 different smell", image_url="dish_washer.jpeg"),
+            Product(name="Detergent", category="Personal-Care", price=100, description="Ariel Detergent  ", image_url="detergent.jpeg"),
+            Product(name="Wipes", category="Personal-Care", price=20, description="Soft and Moisture Wipes ", image_url="wipes.jpeg"),
+            Product(name="Body Lotion", category="Personal-Care", price=300, description="Moisturizing body lotion - 350ml bottle", image_url="body_lotion.jpeg"),
+            Product(name="Broom Stick", category="Personal-Care", price=150, description="Easy to handle and cleaning is extraordinary with comfort", image_url="broom.jpeg")
     ]
 
 
