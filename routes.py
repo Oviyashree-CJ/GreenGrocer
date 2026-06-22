@@ -143,9 +143,7 @@ def products(category=None):
     categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal Care']
     
     if category:
-        from urllib.parse import unquote
-        print("Decoded category:", repr(unquote(category)))
-        products = Product.query.options(joinedload(Product.benefits)).filter(func.trim(func.lower(Product.category))== category.strip().lower()).all()
+        products = Product.query.filter(func.trim(Product.category) == category.strip()).all()
         print("Products found:", len(products))
     else:
         products = Product.query.options(joinedload(Product.benefits)).all()
