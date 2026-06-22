@@ -142,7 +142,9 @@ def products(category=None):
     categories = ['Vegetables', 'Fruits', 'Dairy', 'Beverages', 'Snacks', 'Spices', 'Personal Care']
     
     if category:
+        print("Category received:", repr(category))
         products = Product.query.options(joinedload(Product.benefits)).filter_by(category=category).all()
+        print("Products found:", len(products))
     else:
         products = Product.query.options(joinedload(Product.benefits)).all()
     
