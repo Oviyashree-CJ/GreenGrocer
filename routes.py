@@ -40,7 +40,7 @@ def forgot_password():
             flash('Invalid username or email.', 'danger')
             return render_template('forgot_password.html')
         if not validate_password(new_password):
-            flash('Password must be at least 4 characters with exactly 2 numbers and no special characters.', 'danger')
+            flash('Password must be at least 8 characters with one uppercase, one lowercase, one digit, and one special character.', 'danger')
             return render_template('forgot_password.html')
         
         if user:
@@ -73,7 +73,7 @@ def register():
             return render_template('register.html')
         
         if not validate_password(password):
-            flash('Password must be at least 4 characters with exactly 2 numbers and no special characters.', 'danger')
+            flash('Password must be at least 8 characters with one uppercase, one lowercase, one digit, and one special character.', 'danger')
             return render_template('register.html')
         
         # Check if user already exists
@@ -86,13 +86,17 @@ def register():
             return render_template('register.html')
         
         # Create new user
-        user = User(username=username, email=email, login="No")
+        user = User(username=username, email=email, login="Yes")
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
         
-        flash('Registration successful! Please log in.', 'success')
-        return redirect(url_for('login'))
+        # Automatically log in the user
+        session['user_id'] = user.id
+        session['username'] = user.username
+        
+        flash('Registration successful! You are now logged in.', 'success')
+        return redirect(url_for('index'))
     
     return render_template('register.html')
 

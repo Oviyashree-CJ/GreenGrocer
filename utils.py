@@ -4,20 +4,29 @@ import re
 def validate_password(password):
     """
     Validate password according to requirements:
-    - Minimum 4 characters
-    - Exactly 2 numbers
-    - No special characters
+    - Minimum 8 characters
+    - At least one uppercase letter
+    - At least one lowercase letter
+    - At least one digit
+    - At least one special character (symbol)
     """
-    if len(password) < 4:
+    if len(password) < 8:
         return False
     
-    # Count digits
-    digit_count = sum(1 for char in password if char.isdigit())
-    if digit_count != 2:
+    # Check for at least one uppercase letter
+    if not re.search(r'[A-Z]', password):
         return False
     
-    # Check for special characters (anything that's not alphanumeric)
-    if not password.isalnum():
+    # Check for at least one lowercase letter
+    if not re.search(r'[a-z]', password):
+        return False
+    
+    # Check for at least one digit
+    if not re.search(r'\d', password):
+        return False
+    
+    # Check for at least one special character
+    if not re.search(r'[!@#$%^&*()_+\-=\[\]{};:\'",.<>?/\\|`~]', password):
         return False
     
     return True
