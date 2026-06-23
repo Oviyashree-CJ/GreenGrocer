@@ -78,15 +78,21 @@ function initializeFormValidation() {
 // Password validation function
 function validatePassword() {
     const password = this.value;
-    const digitCount = (password.match(/\d/g) || []).length;
-    const hasSpecialChars = /[^a-zA-Z0-9]/.test(password);
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};:'"`,.<>?/\\|`~]/.test(password);
     
-    if (password.length < 4) {
-        this.setCustomValidity('Password must be at least 4 characters long');
-    } else if (digitCount !== 2) {
-        this.setCustomValidity('Password must contain exactly 2 numbers');
-    } else if (hasSpecialChars) {
-        this.setCustomValidity('Password cannot contain special characters');
+    if (password.length < 8) {
+        this.setCustomValidity('Password must be at least 8 characters long');
+    } else if (!hasUppercase) {
+        this.setCustomValidity('Password must contain at least one uppercase letter');
+    } else if (!hasLowercase) {
+        this.setCustomValidity('Password must contain at least one lowercase letter');
+    } else if (!hasDigit) {
+        this.setCustomValidity('Password must contain at least one digit');
+    } else if (!hasSpecialChar) {
+        this.setCustomValidity('Password must contain at least one special character (!@#$%^&* etc.)');
     } else {
         this.setCustomValidity('');
     }
